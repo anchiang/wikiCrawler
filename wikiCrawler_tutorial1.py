@@ -9,7 +9,7 @@ html_cont = response.read()
 soup = bs(html_cont,'html.parser',from_encoding='utf-8')
 print(soup.title)
 #print(soup.prettify())
-#print(soup.get_text())
+print(soup.get_text())
 urls = soup.find_all('a')
-for url in urls[:10]:
+for url in urls[:5]:
     print(url)
