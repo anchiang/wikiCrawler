@@ -13,3 +13,7 @@ while len(new_urls) >0 and count <30: # 設定爬取網頁上限
     response = urllib.request.urlopen(new_url)
     html_cont = response.read()
     soup = bs(html_cont,'html.parser', from_encoding='utf-8')
+    print(soup.title)
+    #print(soup.prettify())
+    #print(soup.get_text())
+    #print(soup.find(id="footer-poweredbyico"))
