@@ -16,7 +16,7 @@ def get_new_urls(nurl):
             if furl not in new_urls and url not in old_urls:
                 new_urls.append(furl)
 
-URL = "https://en.wikipedia.org/wiki/The_Matrix"
+URL = "https://zh.wikipedia.org/wiki/AlphaGo"
 new_urls=[URL]
 old_urls=[]
 count = 0
@@ -25,9 +25,10 @@ while len(new_urls)>0 and count <10:
     count += 1
     new_url = new_urls.pop()
     old_urls.append(new_url)
-    short_url = re.search(r"/wiki/(\w+)",new_url).group(1)
-    print("%d: %s " % (count,short_url))
-    fout.write("%d, %s \n" % (count,short_url))
+    print(new_url)
+    #short_url = re.search(r"/wiki/(\w+)",new_url).group(1)
+    #print("%d: %s " % (count,short_url))
+    fout.write("%d, %s\n" %(count,new_url))
     get_new_urls(new_url)
 fout.close()
 print("Data is written on output.csv")    
