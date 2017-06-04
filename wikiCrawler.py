@@ -2,14 +2,15 @@
 # -*- coding: utf-8 -*-
 import urllib.request
 import urllib.parse
-from bs4 import BeautifulSoup as bs
-import re
+from bs4 import BeautifulSoup as bs #取得網頁內容架構
+import re #regular Expression
 
-def get_new_urls(nurl):
+def get_new_urls(nurl): #抓取新的網頁連結
     response = urllib.request.urlopen(nurl)
     html_cont = response.read()
     soup = bs(html_cont,'html.parser',from_encoding='utf-8')
     urls = soup.find_all('a',href=re.compile("^/wiki/\w+"))
+    # 尋找新的網址
     for url in urls[:10]:
         if not re.search("\w:\w", url['href']):
             furl = urllib.parse.urljoin(nurl,url['href'])
